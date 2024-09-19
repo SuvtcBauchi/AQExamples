@@ -13,6 +13,12 @@
         <input type="button" value="Calculate" onclick="sum()">
     </form>
 
+    <div class="testNum">
+        <h2>Number should not ba less than zero and not above 100</h2>
+        <input type="text" name="" id="testNum">
+        <input type="button" value="Check Number">
+    </div>
+
 
     <div id="displayImage">
         <h1>Select and Display an Image</h1>
@@ -37,7 +43,19 @@
 
         console.log(sum);
     }
-    
+
+
+    function checkNum(){
+        let num = document.getElementById("testNum").value;
+
+        if (num < 0){
+            alert("Number is less than Zero")
+        } else if(num > 100){
+            alert("Number is greater than 100");
+        }else{
+            document.getElementById("numberField").innerText = num;
+        }
+    }
 
 </script>
 
