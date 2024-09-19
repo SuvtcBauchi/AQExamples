@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example 1</title>
+</head>
+<body>
+    <h1 id="result"></h1>
+    <form action="">
+        <input type="text" name="" id="num1">
+        <input type="text" name="" id="num2">
+        <input type="button" value="Calculate" onclick="sum()">
+    </form>
+</body>
+
+<script type="text/javascript">
+    function sum(){
+        let resul = document.getElementById("result");
+        let num11 = document.getElementById("num1").value;
+        let num22 = document.getElementById("num2").value;
+
+        let sum = 0;
+
+        sum = num11 + num22;
+
+        resul.innerHTML = sum;
+
+        console.log(sum);
+    }
+    
+
+</script>
+
+</html>
