@@ -6,6 +6,16 @@
     <title>Example 1</title>
 </head>
 <body>
+    <main>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="case1.html">Case Study</a></li>
+                </ul>
+            </nav>
+        </header>
+        
     <h1 id="result"></h1>
     <form action="">
         <input type="text" name="" id="num1">
@@ -15,9 +25,15 @@
 
     <div class="testNum">
         <h1 id="numberField"></h1>
-        <p color="red">Number should not ba less than zero and not above 100</p>
+        <h2>Number should not ba less than zero and not above 100</h2>
         <input type="text" name="" id="testNum">
-        <input type="button" value="Check Number">
+        <input type="button" value="Check Number" onclick="checkNum()">
+    </div>
+
+    <div id="displayPic">
+        <h1>Display Local File Content</h1>
+        <input type="file" id="fileInput" accept="image/*"/>
+        <pre id="fileContent"></pre>
     </div>
 
 
@@ -28,6 +44,7 @@
         <br/>
         <img id="imageDisplay" src="" alt="Selected Image" style="display:none; margin-top: 20px;"/>
     </div>
+    </main>
 </body>
 
 <script type="text/javascript">
@@ -45,7 +62,6 @@
         console.log(sum);
     }
 
-
     function checkNum(){
         let num = document.getElementById("testNum").value;
 
@@ -57,6 +73,36 @@
             document.getElementById("numberField").innerText = num;
         }
     }
+
+    document.getElementById('fileInput').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('fileContent').textContent = e.target.result;
+                };
+                reader.readAsText(file);
+            }
+        });
+
+        
+        document.getElementById('displayButton').addEventListener('click', function() {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0]; // Get the selected file
+
+            if (file) {
+                alert("File Selected");
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const imgElement = document.getElementById('imageDisplay');
+                    imgElement.src = e.target.result; // Set the image source to the file's data URL
+                    imgElement.style.display = 'block'; // Make the image visible
+                };
+                reader.readAsDataURL(file); // Read the file as a data URL
+            } else {
+                alert("Please select an image file.");
+            }
+        });
 
 </script>
 
